@@ -1,3 +1,5 @@
+"use strict";
+
 class Contact {
     constructor(name, email, phone, relation) {
         this.name = name;
@@ -22,7 +24,9 @@ class AddressBook {
         // removes a contact based on the provided name
         const index = this.contacts.findIndex(contact => {
             return contact.name === name;
+            // returns the contact with the name that matches the name passed though the method
         });
+        // this function will return -1 if the contact is not found, so you need to make sure that index 
         if (index >= 0) {
             this.contacts.splice(index, 1);
         }
@@ -38,19 +42,12 @@ class AddressBook {
 
 
 const addressBook = new AddressBook();
-addressBook.add("Pam Mooney","pmooney@gmail.com","313-282-8857","mother");
-// addressBook.add("Dan Mooney","cumbersome66@aol.com","313-318-6923","father");
-// // addressBook.print();
-// addressBook.delete("Garrett Mooney");
-// // addressBook.print();
-// addressBook.add("Jeremy Daley","93daley.gmail.com","734-363-5084","boyfriend");
-// addressBook.add("Patricia Wright","n/a","734-282-6799","grandma");
-// // addressBook.print();
-// addressBook.add("Garrett Mooney","garrettmooney@gmail.com","313-580-4399","brother");
-// addressBook.print();
-// console.log(addressBook.contacts);
-// addressBook.delete("Patricia Wright");
-// addressBook.print();
+addressBook.add("Pam Mooney", "@gmail.com","313","mother");
+addressBook.add("Dan Mooney","@aol.com","313","father");
+addressBook.add("Garrett Mooney","@gmail.com","313","brother");
+addressBook.print();
+addressBook.add("Patricia Wright","n/a","734","grandma");
+addressBook.delete("Patricia Wright");
 addressBook.print();
 
 
