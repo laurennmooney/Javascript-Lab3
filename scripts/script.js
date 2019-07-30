@@ -37,17 +37,38 @@ class AddressBook {
             console.log(contact);
         });
     }
+    displayContact() {
+        document.querySelector(".contact_cards").innerHTML = "";
+        addressBook.contacts.forEach(person => {
+            const contact = document.createElement("div");
+            contact.setAttribute("class","card")
+            contact.innerHTML = `
+                <p>Name: ${person.name}</p>
+                <p>Email: ${person.email}</p>
+                <p>Phone: ${person.phone}</p>
+                <p>Relation: ${person.relation}</p>
+                <button class="delete_btn"><i class="fas fa-trash"></i></button>
+            `;
+            document.querySelector(".contact_cards").append(contact);
+        });
+    }
+    deleteAt() {
+
+    }
 }
 
 
 
+
+
 const addressBook = new AddressBook();
-addressBook.add("Pam Mooney", "@gmail.com","313","mother");
-addressBook.add("Dan Mooney","@aol.com","313","father");
-addressBook.add("Garrett Mooney","@gmail.com","313","brother");
-addressBook.print();
-addressBook.add("Patricia Wright","n/a","734","grandma");
-addressBook.delete("Patricia Wright");
-addressBook.print();
 
+// to submit the contact
+function handleSubmit(event) {
+    event.preventDefault();
+    console.log("This form has been submitted");
+    addressBook.add(event.target[0].value, event.target[1].value, event.target[2].value, event.target[3].value);
+    addressBook.displayContact();
+}
 
+document.querySelector("form").addEventListener("submit", handleSubmit);
